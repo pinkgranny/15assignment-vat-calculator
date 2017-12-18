@@ -3,3 +3,16 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.App {
+
+  width: 750px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.vatPercentage input {
+  margin-left: 10px;
+  margin-right: 10px;
+}

@@ -26,7 +26,7 @@ class App extends React.Component {
   handleBruttoAmountChange = event => {
     console.log("Brutto amount changed!", event.target.value)
     this.setState({
-      // vatPercent: event.target.value,
+      // vatPercent: parseInt(event.target.value),
       brutto:  parseInt(event.target.value),
       netto: parseInt(event.target.value) / (this.state.vatPercent / 100 + 1)
       // vat: vatAmount
@@ -36,7 +36,7 @@ class App extends React.Component {
   handleNettoAmountChange = event => {
     console.log("Netto amount changed!", event.target.value)
     this.setState({
-      // vatPercent: event.target.value,
+      // vatPercent: parseInt(event.target.value),
       brutto: parseInt(event.target.value) * ((this.state.vatPercent / 100) + 1),
       netto: parseInt(event.target.value),
       // vat: vatAmount
@@ -64,19 +64,21 @@ class App extends React.Component {
               id="vatChoise1"
               name="vatPercent"
               value="25"
-              checked />
+              onChange={this.handleVatPercentChange} />
             <label htmlFor="vatChoise1">25%</label>
             <input
               type="radio"
               id="vatChoise2"
               name="vatPercent"
-              value="12" />
+              value="12"
+              onChange={this.handleVatPercentChange} />
             <label htmlFor="vatChoise2">12%</label>
             <input
               type="radio"
               id="vatChoise3"
               name="vatPercent"
-              value="6" />
+              value="6"
+              onChange={this.handleVatPercentChange} />
             <label htmlFor="vatChoise3">6%</label>
           </div>
           <div calculatingVatPrices>
@@ -100,16 +102,16 @@ class App extends React.Component {
                your brutto amount is {exVatToIncVat(this.state.vatPercent, this.state.netto)}
             </p>
 
-            <p>Your vat amount:</p>
-            {/* <input
+            {/* <p>Your vat amount:</p>
+            <input
               type="number"
               name="vat"
               onChange={this.handleVatAmountChange}
-              value={this.state.vat} /> */}
+              value={this.state.vat} />
+              <p>If your netto amount is {this.state.netto},
+                 your brutto amount is {exVatToIncVat(this.state.vatPercent, this.state.netto)}
+              </p> */}
           </div>
-        <p>Example calculating ex vat for 1000kr inc vat @ 25%: {incVatToExtVat(25, 1000)}</p>
-        <p>Example calculating inc vat for 600kr ex vat @ 6%: {exVatToIncVat(6, 600)}</p>
-
         </form>
       </div>
     )
